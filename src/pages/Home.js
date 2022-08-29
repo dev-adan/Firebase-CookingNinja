@@ -2,14 +2,14 @@ import React from 'react'
 import { useEffect,useState } from 'react';
 import { RecipeList } from '../components';
 import { projectFirestore } from '../firebase/config';
-import {  collection, getDocs, onSnapshot } from 'firebase/firestore';
+import {  collection, onSnapshot } from 'firebase/firestore';
 
 
 const Home = () => {
 
   const [data,setData] = useState(null)
   const [isPending,setIsPending] = useState(false)
-  const [error,setError] = useState(false)
+
 
   useEffect(() => {
 
@@ -49,7 +49,6 @@ const Home = () => {
 
   return (
     <div className='home'>
-      {error && <p className='error'>{error}</p>}
       {isPending && <p className='loading'>Loading...</p>}
       {data && <RecipeList recipes={data}/>}
     </div>
