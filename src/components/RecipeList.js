@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import TrashCan from '../assets/trashIcon.svg';
 import { projectFirestore } from '../firebase/config';
-import { doc, deleteDoc } from "firebase/firestore/lite";
+import { doc, deleteDoc } from "firebase/firestore";
 
 const RecipeList = ({recipes}) => {
 
@@ -18,7 +18,7 @@ const RecipeList = ({recipes}) => {
   const  handleClick = async (id) => {
 
     await deleteDoc(doc(projectFirestore, "recipes", id));
-    
+
 
   }
 

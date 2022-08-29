@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "./Create.css";
 import { useNavigate } from "react-router-dom";
 import { projectFirestore } from "../firebase/config";
-import { collection, addDoc } from "firebase/firestore/lite";
+import { collection, addDoc } from "firebase/firestore";
 
 
 const Create = () => {
