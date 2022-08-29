@@ -1,6 +1,9 @@
 import './RecipeList.css'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import TrashCan from '../assets/trashIcon.svg';
+import { projectFirestore } from '../firebase/config';
+import { doc, deleteDoc } from "firebase/firestore/lite";
 
 const RecipeList = ({recipes}) => {
 
@@ -10,6 +13,13 @@ const RecipeList = ({recipes}) => {
         No recipes to load...
       </div>
     )
+  }
+
+  const  handleClick = async (id) => {
+
+    await deleteDoc(doc(projectFirestore, "recipes", id));
+    
+
   }
 
   return (
@@ -22,6 +32,13 @@ const RecipeList = ({recipes}) => {
             {recipe.method.substring(0,100)}...
         </div>
         <Link to={`/recipes/${recipe.id}`}>Cook This</Link>
+        <img 
+        src={TrashCan}
+        alt='trashcan icon' 
+        className='delete'
+        onClick={() => handleClick(recipe.id)} 
+
+        />
 
         </div>
     ))}
