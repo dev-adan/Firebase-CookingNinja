@@ -60,8 +60,6 @@ const Recipe = () => {
           <p className="method">{recipe.method}</p>
         </>
       )}
-
-      <button onClick={updateHandler}>update</button>
     </div>
   );
 };
