@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { projectFirestore } from "../firebase/config";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import "./Recipe.css";
 
 const Recipe = () => {
@@ -31,18 +31,7 @@ const Recipe = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateHandler = async () => {
-    // const data = {...recipe,title : 'paratha'};
-    // const updateDoc = doc(projectFirestore,'recipes',id);
-    // setDoc(updateDoc,data)
 
-    await setDoc(doc(projectFirestore, "recipes", id), {
-      ...recipe,
-      title: "updated 3rd tim",
-    })
-      .then(Navigate("/"))
-      .catch((error) => console.log(error));
-  };
 
   return (
     <div className="recipe">
