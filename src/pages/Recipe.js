@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { projectFirestore } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import "./Recipe.css";
 
 const Recipe = () => {
-  const Navigate = useNavigate();
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [isPending, setIsPending] = useState(false);
